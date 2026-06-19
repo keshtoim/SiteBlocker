@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="32dp"
+    android:gravity="center">
+
+    <!-- Ввод PIN -->
+    <LinearLayout
+        android:id="@+id/layoutPinInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BlockSite"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Введите PIN для доступа"
+            android:textSize="16sp"
+            android:layout_marginBottom="32dp"/>
+
+        <EditText
+            android:id="@+id/editPin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="PIN"
+            android:inputType="numberPassword"
+            android:maxLength="8"
+            android:gravity="center"
+            android:textSize="24sp"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:id="@+id/textPinError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#D32F2F"
+            android:layout_marginBottom="16dp"/>
+
+        <Button
+            android:id="@+id/btnEnterPin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Войти"/>
+    </LinearLayout>
+
+    <!-- Таймер задержки -->
+    <LinearLayout
+        android:id="@+id/layoutTimer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BlockSite"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="32dp"/>
+
+        <TextView
+            android:id="@+id/textTimerLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Подождите перед входом"
+            android:textSize="18sp"
+            android:layout_marginBottom="24dp"/>
+
+        <TextView
+            android:id="@+id/textTimer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00:00"
+            android:textSize="64sp"
+            android:textStyle="bold"
+            android:fontFamily="monospace"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="После истечения времени вы автоматически войдёте в приложение"
+            android:textSize="12sp"
+            android:gravity="center"
+            android:layout_marginTop="24dp"/>
+    </LinearLayout>
+
+</LinearLayout>
