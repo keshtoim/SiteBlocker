@@ -15,7 +15,7 @@ class BlocklistRepository(context: Context) {
         prefs.getStringSet("domains", emptySet()) ?: emptySet()
 
     fun addDomain(domain: String) {
-        val normalized = domain.lowercase().trim().trimStart("www.".toRegex())
+        val normalized = domain.lowercase().trim().removePrefix("www.")
         val updated = _domains.value + normalized
         save(updated)
     }

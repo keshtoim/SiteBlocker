@@ -8,9 +8,10 @@ private const val UPSTREAM_DNS = "8.8.8.8"
 private const val DNS_PORT = 53
 private const val TIMEOUT_MS = 3000
 
-fun forwardDnsQuery(query: ByteArray): ByteArray? {
+fun forwardDnsQuery(query: ByteArray, protect: (DatagramSocket) -> Unit): ByteArray? {
     return try {
         val socket = DatagramSocket()
+        protect(socket) // не даём сокету идти через наш же VPN (избегаем петли)
         socket.soTimeout = TIMEOUT_MS
 
         val address = InetAddress.getByName(UPSTREAM_DNS)

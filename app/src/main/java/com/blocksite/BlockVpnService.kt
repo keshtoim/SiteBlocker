@@ -9,7 +9,6 @@ import com.blocksite.dns.forwardDnsQuery
 import java.io.FileInputStream
 import java.io.FileOutputStream
 import java.net.DatagramSocket
-import java.net.InetAddress
 import java.nio.ByteBuffer
 
 class BlockVpnService : VpnService() {
@@ -128,11 +127,7 @@ class BlockVpnService : VpnService() {
                 DnsPacket.buildNxDomain(dns.id, it)
             } ?: return
         } else {
-            // форвардим к 8.8.8.8 через защищённый сокет
-            val socket = DatagramSocket()
-            protect(socket)
-            socket.close()
-            forwardDnsQuery(dnsData) ?: return
+            forwardDnsQuery(dnsData) { socket -> protect(socket) } ?: return
         }
 
         // отправляем DNS-ответ обратно как IP/UDP пакет
